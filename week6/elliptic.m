@@ -21,4 +21,6 @@ Hd = design(h, 'ellip', 'MatchExactly', match);
 disp('Order: ')
 disp(filtord(Hd.sosMatrix));
 fvtool(Hd)
+set(findall(gcf,'-property','FontSize'),'FontSize',20)
+set(findall(gcf,'-property','LineWidth'),'LineWidth',4)
 % [EOF]

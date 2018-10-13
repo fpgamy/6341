@@ -20,5 +20,7 @@ h  = fdesign.lowpass(Fpass, Fstop, Apass, Astop);
 Hd = design(h, 'butter', 'MatchExactly', match);
 disp('Order: ')
 disp(filtord(Hd.sosMatrix));
-fvtool(Hd)
+fvtool(Hd);
+set(findall(gcf,'-property','FontSize'),'FontSize',20)
+set(findall(gcf,'-property','LineWidth'),'LineWidth',4)
 % [EOF]
