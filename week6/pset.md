@@ -60,4 +60,13 @@ $$|H_c(j\Omega)|^2 = \frac{1}{1+[(V_N^2(\frac{j\Omega_c}{j\Omega})\epsilon^2]^{-
 
 Inside the stopband, the value of $x = \frac{j\Omega_c}{j\Omega}$ varies from 0 to 1, and the value inside the cosine varies between 0 and 1. As this is scaled by $\epsilon^2$, the magnitude response squared varies between 1 and $\frac{1}{1+\epsilon^2}$, thus giving the equiripple behaviour in the stopband. 
 
+## Elliptic
+The Elliptic filter has the following magnitude response:
 
+![**Figure 8.** Elliptic low pass filter response.](https://raw.githubusercontent.com/fpgamy/6341/master/week6/chebyshev2.png) 
+
+![**Figure 9.** Elliptic low pass filter passband.](https://raw.githubusercontent.com/fpgamy/6341/master/week6/chebyshev2pb.png) 
+
+![**Figure 10.** Elliptic low pass filter stopband.](https://raw.githubusercontent.com/fpgamy/6341/master/week6/chebyshev2sb.png) 
+
+This filter satisfies the specification as the as the gain in the passband gain is above -1 dB and the maximum gain in the stopband is above -50 dB. The passband and stopband are both equiripple due to the properties of the transfer function.
