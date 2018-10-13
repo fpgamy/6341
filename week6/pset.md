@@ -63,10 +63,10 @@ Inside the stopband, the value of $x = \frac{j\Omega_c}{j\Omega}$ varies from 0 
 ## Elliptic
 The Elliptic filter has the following magnitude response:
 
-![**Figure 8.** Elliptic low pass filter response.](https://raw.githubusercontent.com/fpgamy/6341/master/week6/chebyshev2.png) 
+![**Figure 8.** Elliptic low pass filter response.](https://raw.githubusercontent.com/fpgamy/6341/master/week6/elliptic.png) 
 
-![**Figure 9.** Elliptic low pass filter passband.](https://raw.githubusercontent.com/fpgamy/6341/master/week6/chebyshev2pb.png) 
+![**Figure 9.** Elliptic low pass filter passband.](https://raw.githubusercontent.com/fpgamy/6341/master/week6/ellipticpb.png) 
 
-![**Figure 10.** Elliptic low pass filter stopband.](https://raw.githubusercontent.com/fpgamy/6341/master/week6/chebyshev2sb.png) 
+![**Figure 10.** Elliptic low pass filter stopband.](https://raw.githubusercontent.com/fpgamy/6341/master/week6/ellipticsb.png) 
 
 This filter satisfies the specification as the as the gain in the passband gain is above -1 dB and the maximum gain in the stopband is above -50 dB. The passband and stopband are both equiripple due to the properties of the transfer function.
