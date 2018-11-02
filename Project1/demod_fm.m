@@ -1,7 +1,13 @@
-fid = fopen('gqrx_20181016_105047_98500200_2048000_fc.raw','rb');
-central_freq = 98500200;
+fid = fopen('gqrx_20181029_031722_93992000_2048000_fc_93p7MHz.raw','rb');
+central_freq = 93.7e6;
+hw_freq = 93992000;
 IQData = fread(fid,'float32');
 IQData = IQData(1:2:end) + 1i*IQData(2:2:end);
+plot_spectrum(IQData, sampleRate, central_freq);
+title('$$|X(j\Omega)|$$','interpreter','latex');
+
+sample_no = transpose(1:1:length(IQData));
+IQData = IQData .* exp(1i.*sample_no.*2*pi*((hw_freq-central_freq)/2.048e6));
 sampleRate = 2.048e6;
 
 plot_spectrum(IQData, sampleRate, central_freq);
