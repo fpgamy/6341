@@ -8,16 +8,16 @@ function Hd = differentiator_filter
 % Equiripple Differentiator filter designed using the FIRPM function.
 
 % All frequency values are normalized to 1.
-
-N = 100;                       % Order
-F = [0 0.95 0.98 1];  % Frequency Vector
-A = [0 1 0 0];                 % Amplitude Vector
-W = [1 1];                     % Weight Vector
-
-% Calculate the coefficients using the FIRPM function.
-b  = firls(N, F, A, W, 'differentiator');
-Hd = dfilt.dffir(b);
-[gd, ] = grpdelay(Hd);
-disp(gd(1));
-%fvtool(Hd)
+M = 32;
+beta = 2.4;
+w = kaiser(M, beta);
+n = -((M-1)/2):1:((M-1)/2);
+h_diff = (cos(pi * (n)) ./ (n)) - (sin(pi * (n)) ./ (pi * (n).^2));
+b = w.*transpose(h_diff);
+fvtool(b, 1);
+firtype(b)
+% Hd = dfilt.dffir(b);
+% [gd, ] = grpdelay(Hd);
+% firtype(Hd)
+% fvtool(Hd)
 % [EOF]
