@@ -16,17 +16,27 @@
 % X[k]
 % Need R < L so that no samples are missing from the windows
 
-fid = fopen('gqrx_20181124_194330_940000000_2048000_fc.raw','rb');
+fid = fopen('gqrx_20181123_033424_939788000_2048000_fc.raw','rb');
 hw_freq = 940e6;
 IQData = fread(fid,'float32');
 IQData = IQData(1:2:end) + 1i*IQData(2:2:end);
 fclose(fid);
 
 fs = 2.048e6;
-L  = 0.125*fs;
+N  = 8192;
+L  = N;
 R  = L/2;
-N  = 2^ceil(log2(L));
-pspectrum(abs(IQData), fs, 'spectrogram', 'FrequencyResolution', 4e3, ...
-    'Overlap', 0, 'Leakage', 1);%, 'FrequencyLimits', [0.9e6 1e6]);%, FrequencyResolution', 125);
+% pspectrum(abs(IQData), fs, 'spectrogram', 'FrequencyResolution', 4e3, ...
+%     'Overlap', 0, 'Leakage', 1);%, 'FrequencyLimits', [0.9e6 1e6]);%, FrequencyResolution', 125);
+Z = td_dft(transpose(IQData), R, L, N, blackman(L));
+spectrogram_db = 20.*log10(abs(Z)); 
+X = 1:N;
+Y = 1:(ceil(length(IQData)/R));
+figure;
+imagesc(X, Y, spectrogram_db);
+set(gca, 'YDir', 'normal');
 
+figure;
+plot(mean(spectrogram_db, 1));
+% surf(X, Y, abs(Z), 'edgecolor', 'none');
 % pspectrum(abs(IQData), fs);
